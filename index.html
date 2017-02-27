@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="toDoApp">
+
+<head>
+    <title>To-Do List</title> 
+</head>
+<body ng-controller="toDoController as tdc">  
+  <div class="landing phaseA col-lg-12 col-md-12 col-sm-12">
+    <div class="col-lg-1 col-sm-1 col-md-1"> </div> 
+        <div class="landingBlock col-lg-10 col-md-10 col-sm-10">
+      <h1 class="text-center">{{tdc.titleData}} </h1> 
+     </div>
+     <div class="col-lg-1 col-sm-1 col-md-1"> </div> 
+  </div>
+    <div class="phaseB col-lg-12 col-md-12 col-sm-12">
+      <div class="phaseBblock col-lg-12 col-md-12 col-sm-12">
+      <div class="col-lg-1 col-sm-1 col-md-1"> </div> 
+      <div class ="col-lg-10 col-md-10 col-sm-10" >
+        <form class="in form-horizontal"> 
+          <div class="form-group">
+            <div class="col-sm-12">
+              <div class="input-group">
+              <input type="text" class="form-control input-md" id="inputGroupSuccess2" ng-model="tdc.item"  placeholder="what do you want to do today..?" >
+              <span class="input-group-addon btn btn-default addBtn" ng-click="tdc.add(tdc.item)">Add a To-Do!</span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <span ng-if="tdc.x">        
+            {{tdc.msg}}     
+        </span>
+        <h3 ng-hide="tdc.blank==null">{{tdc.blank}}</h3>         
+      </div>
+      <div class="col-lg-1 col-sm-1 col-md-1"> </div> 
+      </div>    
+    </div>   
+  <div class="phaseC col-lg-12 col-sm-12 col-md-12">
+    <div class="col-lg-1 col-sm-1 col-md-1"> </div> 
+    <div class=" tabMid col-lg-10 col-sm-1 col-md-10">
+      <table class="table table-responsive table-striped table-hover table-bordered">
+        <thead>
+          <tr > <h1 >{{tdc.nOfItem()}} </h1> </tr>
+          <tr ng-hide="tdc.list==undefined || tdc.list.length==0">
+          <th><h4><b>S.No<h4><b></th>
+          <th><h4>Task</h4><b></th>
+          <th><h4><b>Action</h3><b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="x in tdc.list track by $index">
+            <td><h4>{{$index+1}}</h4></td>
+            <td><h4>{{x}}</h4></td>
+            <td class="del"><h4 ng-click="tdc.move(x, $index)">Delete</h4></td>   
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <div class = " pad0 col-lg-6 col-md-5 col-sm-6">
+        <h1 ng-hide="tdc.getComplete()==0" > Check the Completed Ones'!</h1>
+        <ul class="list-group table-striped">
+          <li class="list-group-item" ng-repeat="x in tdc.getComplete() track by $index"><h4>{{x}}</h4></li>          
+        </ul>
+        <button class= " btn btn-danger dangerBtn" ng-hide="tdc.getComplete()==0" ng-click="tdc.destroyAll()">Delete the list</button>
+      </div>
+    </div>
+    <div class="col-lg-1 col-sm-1 col-md-1"> </div> 
+  </div>
+  
+  
+  
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Noto+Serif" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css"> 
+  <!-- <script src="js/angular.min.js"></script> -->  <!-- 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+  <!-- <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script> -->
+</body>
+
+</html>
