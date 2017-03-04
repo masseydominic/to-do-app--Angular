@@ -8,7 +8,7 @@
 	function toDoController(toDoService){
 		var tdc= this;
 		tdc.data1= "To Do list, myboy!";
-		tdc.titleData= "Disha's To Do list!";
+		tdc.titleData= "To Do List, Buddy!";
 		tdc.item= '';
 		tdc.msg="You have already added this item!"
 		tdc.x=0;
@@ -83,7 +83,7 @@
 				return((toDoService.getitem().length) + " task(s) incomplete");
 			}
 			else{
-				return("Nothing Scheduled sweety! Enjoy ;)");
+				return("Nothing Scheduled ! Enjoy ;)");
 			}
 
 			}
